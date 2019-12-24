@@ -2,12 +2,14 @@
   <div class="index">
     <el-container>
       <el-aside width="200px">
-          <h1>黑马头条</h1>
+        <h1>黑马头条</h1>
+        <!-- @open="handleOpen"
+          @close="handleClose" -->
         <el-menu
+          :router="true"
+          :unique-opened="true"
           default-active="2"
           class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
@@ -31,7 +33,7 @@
               <span>文章管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="2-1">
+              <el-menu-item index="articleList">
                 <i class="el-icon-menu"></i>
                 文章列表
               </el-menu-item>
@@ -61,8 +63,18 @@
         </el-menu>
       </el-aside>
       <el-container>
-        <el-header>Header</el-header>
-        <el-main>Main</el-main>
+        <el-header>
+          <span class="icon-paragraph-justify toggle-btn"></span>
+          <span class="system-title">黑马头条后台管理系统</span>
+          <div class="welcome">
+            <span>欢迎你：小伙伴</span> &nbsp;&nbsp;&nbsp;
+            <span>退出</span>
+          </div>
+        </el-header>
+        <el-main>
+            <!-- 路由所映射组件的展示区域 -->
+            <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -84,13 +96,16 @@ export default {}
   }
   .el-aside {
     background-color: #545c64;
+    .el-menu{
+        border-right:  none;
+    }
     h1 {
-    width: 100%;
-    font-size: 25px;
-    line-height: 60px;
-    text-align: center;
-    background-color: #545c64;
-    color: #fff;
+      width: 100%;
+      font-size: 25px;
+      line-height: 60px;
+      text-align: center;
+      background-color: #545c64;
+      color: #fff;
     }
   }
   .el-header {
@@ -122,6 +137,9 @@ export default {}
   }
   .welcome {
     color: white;
+  }
+  .el-main{
+      background-color: rgb(242, 242, 242);
   }
 }
 </style>

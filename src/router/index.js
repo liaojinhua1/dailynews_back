@@ -6,6 +6,10 @@ import VueRouter from 'vue-router'
 // 引入组件
 import Login from '@/views/Login.vue'
 import Index from '@/views/Index.vue'
+import Welcome from '@/views/Welcome.vue'
+import ArticleList from '@/views/ArticleList.vue'
+import ArticlePublish from '@/views/ArticlePublish.vue'
+
 // 3.挂载
 Vue.use(VueRouter)
 // 4.创建router对象
@@ -18,14 +22,27 @@ let router = new VueRouter({
       component: Login
     },
     {
-      name: 'default',
-      path: '/',
-      redirect: { name: 'login' }
-    },
-    {
       name: 'index',
-      path: '/index/:id',
-      component: Index
+      path: '/index',
+      component: Index,
+      redirect: { name: 'welcome' },
+      children: [
+        {
+          name: 'welcome',
+          path: 'welcome',
+          component: Welcome
+        },
+        {
+          name: 'articleList',
+          path: 'articleList',
+          component: ArticleList
+        },
+        {
+          name: 'articlePublish',
+          path: 'articlePublish',
+          component: ArticlePublish
+        }
+      ]
     }
   ]
 })

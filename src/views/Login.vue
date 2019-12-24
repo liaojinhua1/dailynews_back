@@ -52,7 +52,7 @@ export default {
             //  存储用户的token，作为导航守卫的token
             window.localStorage.setItem('dailyNews_back_user', res.data.data.token)
             // 跳转页面
-            this.$router.push({ path: `/index/${res.data.data.user.id}` })
+            this.$router.push({ path: '/' })
           } else if (res.data.message === '用户不存在') {
             // 给出提示，默认弹出三秒
             this.$message.error(res.data.message)
